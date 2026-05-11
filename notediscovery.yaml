@@ -2,9 +2,9 @@ volumes:
   note_discovery_data:
     driver: local
     driver_opts:
-      type: "nfs"
+      type: nfs
       o: "addr=192.168.8.223,nolock,soft,rw"
-      device: ":/mnt/app_configs/note_discovery"
+      device: ":/app_configs/note_discovery"
 
 services:
   notediscovery:
@@ -28,8 +28,4 @@ services:
       - '8000:8000'
     restart: unless-stopped
     volumes:
-      - type: volume
-        source: note_discovery_data
-        target: /nfs
-        volume:
-          nocopy: true
+      - note_discovery_data:/app/data
