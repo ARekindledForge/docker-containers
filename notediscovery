@@ -1,0 +1,28 @@
+services:
+  notediscovery:
+    container_name: notediscovery
+    environment:
+      - TZ=UTC
+    healthcheck:
+      interval: 60s
+      retries: 3
+      start_period: 5s
+      test:
+        - CMD
+        - python
+        - '-c'
+        - >-
+          import urllib.request;
+          urllib.request.urlopen('http://localhost:8000/health')
+      timeout: 3s
+    image: ghcr.io/gamosoft/notediscovery:latest
+    ports:
+      - '8000:8000'
+    restart: unless-stopped
+    volumes:
+      nfs_data:
+        driver: local
+        driver_opts:
+          type: nfs
+          o: "addr=192.168.8.223,rw"
+          device: ":/mnt/app_configs/note_discovery"
