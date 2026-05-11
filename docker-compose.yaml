@@ -1,0 +1,2 @@
+include:
+  - git@github.com:ARekindledForge/repository.git#main:notediscovery.yaml
