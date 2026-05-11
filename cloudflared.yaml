@@ -1,0 +1,13 @@
+services:
+  app-server:
+    image: nginx:latest
+    container_name: nginx-cloudflared
+    # No need to expose ports to the host!
+
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared-fluorine
+    restart: unless-stopped
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=eyJhIjoiMmMxNDczMzNjYTJlZTBkZTRkNDdkNWY0ZjllNmMxNWQiLCJ0IjoiMzA0NWEzNjAtZjU4YS00YjY1LWFkMWItODFiOGNhMmYyZDMyIiwicyI6Ik56QTJOVGRoWlRFdE16SmlaQzAwTlRSaExXRmxORGt0TkRsaE5HVmxNMk0wTVRrMCJ9
