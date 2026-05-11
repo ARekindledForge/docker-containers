@@ -1,3 +1,4 @@
 include:
+  - path: ./cloudflared.yaml
   - path: ./notediscovery.yaml
 #  - path: ./pocketid/pocketid.yaml
