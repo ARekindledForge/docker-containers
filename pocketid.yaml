@@ -1,3 +1,11 @@
+volumes:
+  pocketid_data:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: "addr=192.168.8.223,nolock,soft,rw"
+      device: ":/mnt/tank-ephemeral/app_clone/app_configs/pocketid"
+
 services:
   pocket-id:
     image: ghcr.io/pocket-id/pocket-id:v2
@@ -6,7 +14,7 @@ services:
     ports:
       - 1411:1411
     volumes:
-      - "./data:/app/data"
+      - "pocketid_data:/app/data"
     # Optional healthcheck
     healthcheck:
       test: [ "CMD", "/app/pocket-id", "healthcheck" ]
