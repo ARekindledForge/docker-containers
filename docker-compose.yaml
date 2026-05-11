@@ -1,2 +1,3 @@
 include:
   - path: ./notediscovery.yaml
+  - path: ./pocketid.yaml
