@@ -4,7 +4,7 @@ volumes:
     driver_opts:
       type: nfs
       o: "addr=192.168.8.223,nolock,soft,rw"
-      device: ":/mnt/tank-ephemeral/app_clone/app_configs/pocketid"
+      device: ":/mnt/tank-ephemeral/app_clone/app_configs/pocketID"
 
 services:
   pocket-id:
